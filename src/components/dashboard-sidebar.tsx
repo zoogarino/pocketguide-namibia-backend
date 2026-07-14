@@ -13,6 +13,7 @@ import {
   Users,
   Settings,
   ChevronDown,
+  Compass,
 } from "lucide-react";
 
 interface NavChild {
