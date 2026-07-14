@@ -15,10 +15,15 @@ import {
   ChevronDown,
 } from "lucide-react";
 
+interface NavChild {
+  title: string;
+  children?: string[];
+}
+
 interface NavGroup {
   title: string;
   icon: React.ComponentType<{ className?: string }>;
-  children: string[];
+  children: NavChild[];
 }
 
 const navGroups: NavGroup[] = [
@@ -26,63 +31,114 @@ const navGroups: NavGroup[] = [
     title: "Pin management",
     icon: MapPin,
     children: [
-      "Accommodation",
-      "Sights",
-      "Activities",
-      "Emergency",
-      "Support",
-      "Support Namibia",
-      "City / Town",
-      "Sub-Categories",
-      "Legend of the Pins",
+      { title: "Accommodation" },
+      { title: "Sights" },
+      { title: "Activities" },
+      { title: "Emergency" },
+      { title: "Support" },
+      { title: "Support Namibia" },
+      { title: "City / Town" },
+      { title: "Sub-Categories" },
+      { title: "Legend of the Pins" },
     ],
   },
   {
     title: "Car Rentals",
     icon: Car,
-    children: ["Car Types", "Car Banners"],
+    children: [{ title: "Car Types" }, { title: "Car Banners" }],
   },
   {
     title: "Trip management",
     icon: Route,
-    children: ["Trips"],
+    children: [{ title: "Trips" }],
   },
   {
     title: "Agency management",
     icon: Building2,
     children: [
-      "Agencies",
-      "Subscriptions",
-      "PIN Requests",
-      "Payment Gateway",
+      { title: "Agencies" },
+      {
+        title: "Subscriptions",
+        children: ["Plans", "Promo Codes", "Active Subscriptions", "Transaction History"],
+      },
+      { title: "PIN Requests" },
+      { title: "Payment Gateway" },
     ],
   },
   {
     title: "Inquiries",
     icon: HelpCircle,
     children: [
-      "Car Rental Inquiries",
-      "Trip Inquiries",
-      "Activity / Accommodation Inquiries",
+      { title: "Car Rental Inquiries" },
+      { title: "Trip Inquiries" },
+      { title: "Activity / Accommodation Inquiries" },
     ],
   },
   {
     title: "User management",
     icon: Users,
-    children: ["App Users", "Admin Users"],
+    children: [{ title: "App Users" }, { title: "Admin Users" }],
   },
   {
     title: "Configuration",
     icon: Settings,
     children: [
-      "App Settings",
-      "Website Manager",
-      "Notifications & Promotion Email",
-      "App Update",
-      "Feedback",
+      { title: "App Settings" },
+      { title: "Website Manager" },
+      { title: "Notifications & Promotion Email" },
+      { title: "App Update" },
+      { title: "Feedback" },
     ],
   },
 ];
+
+function NestedNavItem({ item }: { item: NavChild }) {
+  const [open, setOpen] = useState(false);
+
+  if (!item.children) {
+    return (
+      <a
+        href="#"
+        className="block rounded-md px-3 py-1.5 text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+      >
+        {item.title}
+      </a>
+    );
+  }
+
+  return (
+    <Collapsible open={open} onOpenChange={setOpen}>
+      <CollapsibleTrigger asChild>
+        <button
+          type="button"
+          className="flex w-full items-center justify-between rounded-md px-3 py-1.5 text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+        >
+          {item.title}
+          <ChevronDown
+            className={cn(
+              "h-3.5 w-3.5 shrink-0 text-muted-foreground transition-transform duration-200",
+              open && "rotate-180",
+            )}
+          />
+        </button>
+      </CollapsibleTrigger>
+      <CollapsibleContent>
+        <ul className="ml-3 mt-0.5 flex flex-col gap-0.5 border-l pl-3">
+          {item.children.map((child) => (
+            <li key={child}>
+              <a
+                href="#"
+                className="block rounded-md px-3 py-1.5 text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+              >
+                {child}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </CollapsibleContent>
+    </Collapsible>
+  );
+}
 
 export function DashboardSidebar() {
   const [openGroup, setOpenGroup] = useState<string | null>("Pin management");
@@ -142,13 +198,8 @@ export function DashboardSidebar() {
               <CollapsibleContent>
                 <ul className="ml-4 mt-1 flex flex-col gap-0.5 border-l pl-3">
                   {group.children.map((child) => (
-                    <li key={child}>
-                      <a
-                        href="#"
-                        className="block rounded-md px-3 py-1.5 text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
-                      >
-                        {child}
-                      </a>
+                    <li key={child.title}>
+                      <NestedNavItem item={child} />
                     </li>
                   ))}
                 </ul>
