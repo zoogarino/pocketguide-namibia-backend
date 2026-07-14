@@ -154,6 +154,7 @@ export function DashboardSidebar() {
         <span className="font-display text-[15px] font-semibold tracking-tight text-sidebar-active-foreground">
           Pocket Guide Namibia
         </span>
+        <Compass className="ml-2 h-[18px] w-[18px] text-sidebar-active-foreground" />
       </div>
 
       <nav className="flex flex-col gap-1 p-3">
