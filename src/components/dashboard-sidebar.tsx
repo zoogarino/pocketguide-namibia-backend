@@ -158,7 +158,7 @@ export function DashboardSidebar() {
       <nav className="flex flex-col gap-1 p-3">
         <a
           href="/"
-          className="flex items-center gap-3 rounded-lg bg-primary/10 px-3 py-2 text-sm font-medium text-primary"
+          className="flex items-center gap-3 rounded-lg bg-dashboard-active px-3 py-2 text-sm font-medium text-dashboard-active-foreground"
         >
           <LayoutDashboard className="h-4 w-4 shrink-0" />
           Dashboard
