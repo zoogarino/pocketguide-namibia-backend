@@ -99,7 +99,7 @@ function NestedNavItem({ item }: { item: NavChild }) {
     return (
       <a
         href="#"
-        className="block rounded-md px-3 py-1.5 text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+        className="block px-3 py-1.5 text-sm text-sidebar-sub-foreground transition-colors hover:text-sidebar-active-foreground"
       >
         {item.title}
       </a>
@@ -111,24 +111,24 @@ function NestedNavItem({ item }: { item: NavChild }) {
       <CollapsibleTrigger asChild>
         <button
           type="button"
-          className="flex w-full items-center justify-between rounded-md px-3 py-1.5 text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+          className="flex w-full items-center justify-between px-3 py-1.5 text-sm text-sidebar-sub-foreground transition-colors hover:text-sidebar-active-foreground"
         >
           {item.title}
           <ChevronDown
             className={cn(
-              "h-3.5 w-3.5 shrink-0 text-muted-foreground transition-transform duration-200",
+              "h-3.5 w-3.5 shrink-0 opacity-70 transition-transform duration-200",
               open && "rotate-180",
             )}
           />
         </button>
       </CollapsibleTrigger>
       <CollapsibleContent>
-        <ul className="ml-3 mt-0.5 flex flex-col gap-0.5 border-l pl-3">
+        <ul className="ml-3 mt-0.5 flex flex-col gap-0.5 border-l border-white/10 pl-3">
           {item.children.map((child) => (
             <li key={child}>
               <a
                 href="#"
-                className="block rounded-md px-3 py-1.5 text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+                className="block px-3 py-1.5 text-sm text-sidebar-sub-foreground transition-colors hover:text-sidebar-active-foreground"
               >
                 {child}
               </a>
@@ -148,17 +148,19 @@ export function DashboardSidebar() {
   };
 
   return (
-    <aside className="fixed inset-y-0 left-0 z-10 w-[240px] border-r bg-background">
-      <div className="flex h-14 items-center border-b px-4">
-        <span className="font-semibold tracking-tight text-foreground">Pocketguide Namibia</span>
+    <aside className="fixed inset-y-0 left-0 z-10 w-[240px] bg-sidebar text-sidebar-foreground">
+      <div className="flex h-14 items-center border-b border-white/10 px-4">
+        <span className="font-display text-[15px] font-semibold tracking-tight text-sidebar-active-foreground">
+          Pocketguide Namibia
+        </span>
       </div>
 
       <nav className="flex flex-col gap-1 p-3">
         <a
           href="/"
-          className="flex items-center gap-3 rounded-lg bg-dashboard-active px-3 py-2 text-sm font-medium text-dashboard-active-foreground"
+          className="relative flex items-center gap-3 border-l-[3px] border-ochre bg-ochre/12 px-3 py-2 text-sm font-medium text-sidebar-active-foreground"
         >
-          <LayoutDashboard className="h-4 w-4 shrink-0" />
+          <LayoutDashboard className="h-[15px] w-[15px] shrink-0" />
           Dashboard
         </a>
 
@@ -176,17 +178,17 @@ export function DashboardSidebar() {
                 <button
                   type="button"
                   className={cn(
-                    "flex w-full items-center justify-between rounded-lg px-3 py-2 text-sm font-medium text-foreground transition-colors hover:bg-muted",
-                    isOpen && "bg-muted",
+                    "flex w-full items-center justify-between border-l-[3px] border-transparent px-3 py-2 text-sm font-medium text-sidebar-foreground transition-colors hover:text-sidebar-active-foreground",
+                    isOpen && "text-sidebar-active-foreground",
                   )}
                 >
                   <span className="flex items-center gap-3">
-                    <Icon className="h-4 w-4 shrink-0" />
+                    <Icon className="h-[15px] w-[15px] shrink-0" />
                     {group.title}
                   </span>
                   <ChevronDown
                     className={cn(
-                      "h-4 w-4 shrink-0 text-muted-foreground transition-transform duration-200",
+                      "h-4 w-4 shrink-0 opacity-70 transition-transform duration-200",
                       isOpen && "rotate-180",
                     )}
                   />
@@ -194,7 +196,7 @@ export function DashboardSidebar() {
               </CollapsibleTrigger>
 
               <CollapsibleContent>
-                <ul className="ml-4 mt-1 flex flex-col gap-0.5 border-l pl-3">
+                <ul className="ml-[19px] mt-1 flex flex-col gap-0.5 border-l border-white/10 pl-3">
                   {group.children.map((child) => (
                     <li key={child.title}>
                       <NestedNavItem item={child} />
