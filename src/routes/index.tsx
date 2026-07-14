@@ -42,7 +42,7 @@ const metrics = [
   {
     label: "Pending trip inquiries",
     value: "18",
-    icon: Route,
+    icon: RouteIcon,
     iconBgClass: "bg-amber/10",
     iconClass: "text-amber-foreground",
   },
