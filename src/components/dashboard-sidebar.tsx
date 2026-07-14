@@ -151,7 +151,7 @@ export function DashboardSidebar() {
     <aside className="fixed inset-y-0 left-0 z-10 w-[240px] bg-sidebar text-sidebar-foreground">
       <div className="flex h-14 items-center border-b border-white/10 px-4">
         <span className="font-display text-[15px] font-semibold tracking-tight text-sidebar-active-foreground">
-          Pocketguide Namibia
+          Pocket Guide Namibia
         </span>
       </div>
 
