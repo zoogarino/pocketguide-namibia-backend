@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { DashboardSidebar } from "@/components/dashboard-sidebar";
 import { MetricCard } from "@/components/metric-card";
-import { Users, Smartphone, Building2, Car, Route, HelpCircle } from "lucide-react";
+import { Users, Smartphone, Building2, Car, Route as RouteIcon, HelpCircle } from "lucide-react";
 
 export const Route = createFileRoute("/")({
   component: Index,
