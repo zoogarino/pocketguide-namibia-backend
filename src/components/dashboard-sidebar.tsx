@@ -150,9 +150,7 @@ export function DashboardSidebar() {
   return (
     <aside className="fixed inset-y-0 left-0 z-10 w-[240px] border-r bg-background">
       <div className="flex h-14 items-center border-b px-4">
-        <span className="font-semibold tracking-tight text-foreground">
-          Pocketguide Namibia
-        </span>
+        <span className="font-semibold tracking-tight text-foreground">Pocketguide Namibia</span>
       </div>
 
       <nav className="flex flex-col gap-1 p-3">

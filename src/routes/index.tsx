@@ -62,9 +62,7 @@ function Index() {
 
       <main className="ml-[240px] min-h-screen p-8">
         <header className="mb-8">
-          <h1 className="text-2xl font-semibold tracking-tight text-foreground">
-            Dashboard
-          </h1>
+          <h1 className="text-2xl font-semibold tracking-tight text-foreground">Dashboard</h1>
           <p className="mt-1 text-sm text-muted-foreground">
             Overview of users, agencies, and open inquiries.
           </p>
