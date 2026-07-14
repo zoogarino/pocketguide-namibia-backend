@@ -19,7 +19,7 @@ const metrics: Array<{
     accent: "ochre",
   },
   {
-    label: "App users by type",
+    label: "AGENCY USERS BY TYPE",
     value: "9,118",
     breakdown: "Client users 7,205 · Travel parties 1,913",
     accent: "ochre",
