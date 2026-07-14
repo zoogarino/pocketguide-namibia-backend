@@ -59,7 +59,7 @@ const navGroups: NavGroup[] = [
   },
   {
     title: "Inquiries",
-    icon: MessageSquareQuestion,
+    icon: HelpCircle,
     children: [
       "Car Rental Inquiries",
       "Trip Inquiries",
